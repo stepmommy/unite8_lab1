@@ -1,94 +1,95 @@
 # Lab Reflection: Git Version Control + Debugging (BuggyProgram)
 
 ## Student Name
-
+BP
 
 ## GitHub Repository URL
 
+https://github.com/stepmommy/unite8_lab1
 
 ---
 
 # Commit 1: Initial Commit
 
 ## What did you include in this commit?
-- Added all baseline project starter files including `BuggyProgram.java`, the JUnit test suites (`Task1Test.java`, `Task2Test.java`, `Task3Test.java`), and `README.md`.
+- The starter Java program, project configuration, and initial test class placeholders.
 
 ## What was the purpose of this commit?
-- To establish a clean baseline of the unedited starter code in Git prior to making any debugging changes.
+- To save the original project as a baseline before editing it.
 
 ---
 
 # Commit 2: Task 1 (getGrade)
 
 ## Which tests in Task1Test were failing before your fix?
-- `testExceedsGrade`, `testMeetsGrade`, and boundary condition tests evaluating scores of 80 and 90.
+- The current `getGrade` implementation matches the expected outcomes in the supplied tests: 90 and above returns `Exceeds`, 80 through 89 returns `Meets`, and lower scores return `Does Not Meet`. No failing test or code fix is present in the current project history.
 
 ## What was the issue in the code?
-- The return strings were swapped (`score > 90` returned `"Meets"` instead of `"Exceeds"`, and `score > 80` returned `"Exceeds"` instead of `"Meets"`). Additionally, strict inequalities (`>`) were used instead of inclusive comparisons (`>=`), misclassifying boundary values like 80 and 90.
+- No issue is visible in the current implementation relative to `Task1Test`.
 
 ## What change did you make to fix it?
-- Swapped the return strings so scores `>= 90` return `"Exceeds"` and scores `>= 80` return `"Meets"`, and updated the comparison operators from `>` to `>=`.
+- No code change has been made for this task yet.
 
 ## How did the tests help guide your fix?
-- The JUnit failure messages clearly pointed out the expected vs. actual output strings and revealed the exact boundary score where the logic failed.
+- The test cases document the expected results at scores 75, 80, 85, 90, and 95. Run `Task1Test` in IntelliJ to confirm those cases pass.
 
 ---
 
 # Commit 3: Task 2 (sumEvenNumbers)
 
 ## Which tests in Task2Test were failing before your fix?
-- `testSumWithEvensAndOdds`, `testAllEvens`, and any test passing a non-empty array due to index out-of-bounds exceptions.
+- The current implementation handles the supplied mixed, all-even, all-odd, and empty-array cases. No failing test or code fix is present in the current project history.
 
 ## What was the issue in the code?
-- The accumulator variable `sum` was initialized to `1` instead of `0`, corrupting the total. Additionally, the loop condition used `i <= values.length` instead of `i < values.length`, triggering an `ArrayIndexOutOfBoundsException` on the final iteration.
+- No issue is visible in the current implementation relative to `Task2Test`.
 
 ## What change did you make to fix it?
-- Reinitialized `sum = 0` and changed the loop continuation boundary to `i < values.length`.
+- No code change has been made for this task yet.
 
 ## How did the tests help guide your fix?
-- The test output provided the exact stack trace and line number for the `ArrayIndexOutOfBoundsException`, and showed an expected sum that was consistently 1 greater than the correct mathematical total.
+- The cases check that only even values are added and that an empty array returns zero. Run `Task2Test` in IntelliJ to confirm them.
 
 ---
 
 # Commit 4: Task 3 (sumRange)
 
 ## Which tests in Task3Test were failing before your fix?
-- Tests checking inclusive range addition (e.g., summing ranges like 1 to 5) and edge cases where start and end were equal.
+- The current implementation returns the inclusive sum for an ordered range and zero when the start is greater than the end, matching the supplied tests. No failing test or code fix is present in the current project history.
 
 ## What was the issue in the code?
-- The loop boundary condition excluded the final `end` value (using `< end` instead of `<= end`), and the accumulator initialization was incorrect.
+- No issue is visible in the current implementation relative to `Task3Test`.
 
 ## What change did you make to fix it?
-- Set `sum = 0` and adjusted the loop to iterate through `for (int i = start; i <= end; i++)` to ensure both bounds are included.
+- No code change has been made for this task yet.
 
 ## How did the tests help guide your fix?
-- The assertions highlighted the off-by-one difference between the calculated sum and the expected sum across multiple range intervals.
+- The cases cover a standard range, equal bounds, a negative-to-positive range, and reversed bounds. Run `Task3Test` in IntelliJ to confirm them.
 
 ---
 
 # Overall Reflection
 
 ## Which task was the easiest to fix? Why?
-- Task 1 (`getGrade`) was the easiest because the logic error was a straightforward inversion of string literals and a simple threshold adjustment that was immediately visible upon inspecting the nested `if`/`else` branches.
+- I have not made code fixes yet because the current implementation already matches the supplied test expectations. Comparing each method with its tests helped me understand the intended boundaries and results.
 
 ## Which task was the most difficult? Why?
-- Task 2 (`sumEvenNumbers`) required more attention because it contained two distinct categories of bugs: a runtime exception caused by an off-by-one index loop condition, combined with an arithmetic state bug from initializing `sum` to 1.
+- I have not made code fixes yet. `sumRange` has the most boundary cases in its tests, especially equal and reversed bounds, so those require careful attention.
 
 ## How did Git help you track your progress through the debugging process?
-- Git isolated each bug fix into an independent, reviewable commit. If a fix broke an unrelated part of the class, the diff clearly highlighted exactly what changed since the previous passing commit.
+- Git shows the project history and the changes made between saved versions. Separate commits can make each completed task easier to review.
 
 ## Why is it important to make small, frequent commits when debugging code?
-- Small commits make it trivial to locate regression errors using `git log` or `git diff`. They also provide rollback checkpoints so you can revert a bad experiment without losing prior working solutions.
+- Small commits make it easier to see which change caused a problem and to return to a known working version.
 
 ## What did you learn about using JUnit tests to guide debugging?
-- JUnit tests eliminate guesswork by providing immediate feedback on edge conditions, off-by-one errors, and boundary values that are easily overlooked when manually reviewing code.
+- JUnit tests spell out expected behavior for normal inputs and edge cases. Comparing those expectations with the implementation helps identify whether a change is needed.
 
 ---
 
 # Commit 5: Final Reflection
 
 ## What did you complete or update before making this final commit?
-- Verified that all three JUnit test suites pass in IntelliJ, updated the repository URL and student name, and documented all reflections across the commit sections in `README.md`.
+- I reviewed the supplied tests and program, corrected this README so it reflects the current code and history, and recorded the repository URL. I still need to enter my name and run each test class in IntelliJ.
 
 ## Why is it useful to document your work after completing a programming task?
-- Documenting the thought process reinforces why specific patterns failed, preserves technical context for collaborators, and creates an audit trail that makes code maintenance easier in the future.
+- Documentation records what the code is expected to do and what I learned, making the work easier to review and continue later.

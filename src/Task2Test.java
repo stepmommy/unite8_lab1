@@ -1,5 +1,3 @@
-public class Task2Test {
-}
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

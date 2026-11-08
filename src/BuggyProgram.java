@@ -17,9 +17,9 @@ public class BuggyProgram {
     public static int sumEvenNumbers(int[] values) {
         int sum = 0;
 
-        for (int i = 0; i < values.length; i++) {
-            if (values[i] % 2 == 0) {
-                sum += values[i];
+        for (int value : values) {
+            if (value % 2 == 0) {
+                sum += value;
             }
         }
 
@@ -37,7 +37,7 @@ public class BuggyProgram {
         return sum;
     }
 
-    public static void main(String[] args) {
+    static void main() {
         System.out.println("Test the program using the JUnit tests");
     }
 }
